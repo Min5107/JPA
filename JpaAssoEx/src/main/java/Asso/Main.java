@@ -26,30 +26,30 @@ public class Main {
         LocalDateTime localDateTime = LocalDateTime.now();
 
         try {
-            Member member = new Member();
-//            member.setName("윤형우");
-//            // setCity 부분 수정 (Member 엔티티에 city 관련 프로퍼티가 없는 경우)
-//            member.setCity("윤형우시");
-//            em.persist(member);
-
-            Order order = new Order();
-            order.setId(15L);
-//            order.setOrderDate(localDateTime);
-//            order.setStatus(OrderStatus.ORDER);
-//            order.setMember(member);
-//            em.persist(order);
-
-//            OrderItem orderItem = new OrderItem();
-//            orderItem.setOrder(order);
-//            em.persist(orderItem);
-
-            Order findOrder = em.find(Order.class, order.getId());
-            Member findMember = findOrder.getMember();
-
-
-            System.out.println("출력 : " + findMember.getName());
-            System.out.println("출력 : " + findMember.getId() + " " + findMember.getCity());
-            System.out.println("출력 : " + findOrder.getId());
+//            Member member = new Member();
+////            member.setName("윤형우");
+////            // setCity 부분 수정 (Member 엔티티에 city 관련 프로퍼티가 없는 경우)
+////            member.setCity("윤형우시");
+////            em.persist(member);
+//
+//            Order order = new Order();
+//            order.setId(15L);
+////            order.setOrderDate(localDateTime);
+////            order.setStatus(OrderStatus.ORDER);
+////            order.setMember(member);
+////            em.persist(order);
+//
+////            OrderItem orderItem = new OrderItem();
+////            orderItem.setOrder(order);
+////            em.persist(orderItem);
+//
+//            Order findOrder = em.find(Order.class, order.getId());
+//            Member findMember = findOrder.getMember();
+//
+//
+//            System.out.println("출력 : " + findMember.getName());
+//            System.out.println("출력 : " + findMember.getId() + " " + findMember.getCity());
+//            System.out.println("출력 : " + findOrder.getId());
 
             tx.commit(); // 트랜잭션 커밋
         } catch (Exception e) {
