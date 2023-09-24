@@ -13,6 +13,18 @@ public class Member {
     private long id;
 
     private String name;
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+    @Embedded
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public long getId() {
         return id;
@@ -30,30 +42,6 @@ public class Member {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
     public List<Order> getOrders() {
         return orders;
     }
@@ -62,10 +50,6 @@ public class Member {
         this.orders = orders;
     }
 
-    private String city;
-    private String street;
-    private String zipcode;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orders = new ArrayList<>();
+
 }
