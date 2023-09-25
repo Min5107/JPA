@@ -2,8 +2,6 @@ package Asso.domain;
 
 import javax.persistence.*;
 
-import static javax.persistence.FetchType.LAZY;
-
 @Entity
 public class OrderItem {
 
@@ -52,10 +50,10 @@ public class OrderItem {
     @Column(name = "ORDER_ITEM_ID")
     private long id;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "ITEM_ID")
     private Item item;
     private int orderPrice;

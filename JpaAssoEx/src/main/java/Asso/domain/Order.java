@@ -5,9 +5,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.FetchType.LAZY;
-
 @Entity
 @Table(name = "ORDERS")
 public class Order {
@@ -57,7 +54,7 @@ public class Order {
     @Column(name = "ORDER_ID")
     private long id;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
     private LocalDateTime orderDate;
@@ -65,10 +62,10 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    @OneToMany(mappedBy = "order", cascade = ALL)
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne(fetch = LAZY, cascade = ALL)
+    @OneToOne
     @JoinColumn(name = "DELIVERY_ID")
     private Delivery delivery;
 }

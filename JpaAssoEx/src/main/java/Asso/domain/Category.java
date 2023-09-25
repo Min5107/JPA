@@ -4,8 +4,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.FetchType.*;
-
 @Entity
 public class Category {
 
@@ -14,7 +12,7 @@ public class Category {
     private long id;
     private String name;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "PARENT_ID") // Slef Join
     private Category parent;
     @OneToMany(mappedBy = "parent")
