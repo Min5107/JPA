@@ -12,7 +12,7 @@ public class OrderItem {
 
     @Id @GeneratedValue
     @Column(name = "order_item_id")
-    private long id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
@@ -24,4 +24,27 @@ public class OrderItem {
 
     private int orderPrice; // 주문 가격
     private int count; // 주문 수량
+
+    // 생성 메서드
+
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+
+    public void cancel(){
+        getItem().addStock(count);
+    }
+
+    // 개당 가격
+    public int getTotalPrice(){
+        return getOrderPrice() * getCount();
+    }
+
 }

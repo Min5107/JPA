@@ -10,31 +10,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
 public class MemberServiceTest {
-
-    @Autowired
-    MemberService memberService;
-    @Autowired
-    MemberRepository memberRepository;
-
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
     @Test
-    @Rollback(value = false)
-    public void testRegister() throws Exception {
-        // given
+    public void register() throws Exception {
+        //Given
         Member member = new Member();
-        member.setName("testMember");
-
-        // when
-        Long savedId = memberService.join(member);
-
-        // then
-        assertEquals(member, memberRepository.findOne(savedId));
+        member.setName("kim");
+        //When
+        Long saveId = memberService.join(member);
+        //Then
+        assertEquals(member, memberRepository.findOne(saveId));
     }
     @Test(expected = IllegalStateException.class)
     public void valiRegister() throws Exception {
